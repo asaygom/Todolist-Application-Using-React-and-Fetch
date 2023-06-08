@@ -1,10 +1,6 @@
-h1.title {
-	text-align: center;
-	color: black;
-	letter-spacing: 2px;
-}
+
 h1.todo-header {
-	background: #2980e9;
+	background: #0A0B0D;
 	color: white;
 	margin: 0;
 	padding: 10px 20px;
@@ -16,7 +12,7 @@ h1.todo-header {
 div#container {
 	width: 360px;
 	margin: 0 auto;
-	border: 2px solid skyblue;
+	border: 2px solid #73A2BF;
 	background: #f7f7f7;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
@@ -47,8 +43,8 @@ li.clicked {
 
 input#addToDo {
 	font-size: 18px;
-	color: #2980b9;
-	background: #b7eeff;
+	color: #213140;
+	background: #4A738C;
 	border: none;
 	width: 100%;
 	padding: 10px 10px 10px 20px;
@@ -62,6 +58,9 @@ input#addToDo:focus {
 	border: 2px solid skyblue;
 	outline: none;
 	transition: 0.1s;
+}
+ ::placeholder{
+	color: #91C4D9;
 }
 
 i.fa-trash {
@@ -84,4 +83,12 @@ span {
 li:hover span {
 	opacity: 1;
 	width: 40px;
+}
+
+#root{
+background-color: #213140;
+padding: 8px;
+height: 100vh;
+display: flex;
+align-items: center;
 }
