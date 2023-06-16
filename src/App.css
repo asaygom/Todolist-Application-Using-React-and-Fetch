@@ -91,4 +91,30 @@ padding: 8px;
 height: 100vh;
 display: flex;
 align-items: center;
+justify-content: center;
+}
+
+.header{
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.button{
+	background-color: #73A2BF;
+	justify-content: center;
+}
+
+.button2{
+	background-color: #df7e7e;
+	justify-content: center;
+}
+
+.footer{
+	display: flex;
+	padding-top: 10px;
+	justify-content: space-around;
+	align-items: center;
 }
