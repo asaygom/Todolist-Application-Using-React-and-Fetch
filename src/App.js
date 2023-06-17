@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
 	})
 
 
-	if(username!==""&&username!=="Choose user"){
+	useEffect(()=>{if(username!==""&&username!=="Choose user"){
 		fetch("http://assets.breatheco.de/apis/fake/todos/user/"+username,{
 			method:"GET",
 			headers:{"Content-Type":"application/json"}
@@ -46,7 +46,7 @@ function App() {
 		}).catch((error)=>{
 			console.log(error)
 		})
-	}
+	}else setListOfTasks([])},[username])
 	
 	const deleteUsername = () => {
 		fetch("http://assets.breatheco.de/apis/fake/todos/user/"+username,{
@@ -80,7 +80,7 @@ function App() {
 	return (
 		<div>
 			<div className='header'>
-				<select className='selection' onChange={handleUsername}>
+				<select className='selection' onChange={handleUsername} value={username}>
 					<option>Choose user</option>
 					{listOfUsernames.map((item, index)=>{ return <option key={index}>{item}</option>})}
 				</select>
