@@ -67,7 +67,7 @@ i.fa-trash {
 	margin: 7px;
 }
 
-span {
+.trash {
 	background: tomato;
 	height: 35px;
 	width: 0;
@@ -102,14 +102,12 @@ justify-content: center;
 	align-items: center;
 }
 
-.button{
+#button, #button-addon2{
 	background-color: #73A2BF;
-	justify-content: center;
 }
 
-.button2{
+#button2{
 	background-color: #df7e7e;
-	justify-content: center;
 }
 
 .footer{
@@ -117,4 +115,9 @@ justify-content: center;
 	padding-top: 10px;
 	justify-content: space-around;
 	align-items: center;
+}
+
+span.form-label {
+	color: #f7f7f7;
+	margin-top: 0.5rem;
 }
