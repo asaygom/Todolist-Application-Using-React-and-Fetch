@@ -5,6 +5,7 @@ function App() {
 	const [task, setTask] = useState({label:""})
 	const [listOfTasks, setListOfTasks] = useState([])
 	const [username, setUsername] = useState("")
+	const [newUser, setNewUser] = useState("")
 	const [listOfUsernames, setListOfUsernames] = useState([])
 
 	const handleChange = (event) => {
@@ -22,19 +23,24 @@ function App() {
 
 	const handleUsername = (event) => {
 		setUsername(event.target.value)
-		event.preventDefault()
 	}
 
-	fetch("http://assets.breatheco.de/apis/fake/todos/user", {
-		method: "GET",
-		headers:{"Content-Type":"application/json"}
-	}).then((response)=>{
-		return response.json()
-	}).then((data)=>{
-		setListOfUsernames(data)
-	}).catch((error)=>{
-		console.log(error)
-	})
+	const handleNewUser = (event) => {
+		setNewUser(event.target.value)
+	}
+
+	useEffect(()=>{
+		fetch("http://assets.breatheco.de/apis/fake/todos/user", {
+			method: "GET",
+			headers:{"Content-Type":"application/json"}
+		}).then((response)=>{
+			return response.json()
+		}).then((data)=>{
+			setListOfUsernames(data)
+		}).catch((error)=>{
+			console.log(error)
+		})
+	},[username])
 
 	useEffect(()=>{if(username!==""&&username!=="Choose user"){
 		fetch("http://assets.breatheco.de/apis/fake/todos/user/"+username,{
@@ -79,20 +85,18 @@ function App() {
 	}
 
 	const createUser = (event) => {
-		if (event.key === "Enter") {
-			fetch("http://assets.breatheco.de/apis/fake/todos/user/"+username,{
-				method:"POST",
-				body: JSON.stringify("[]"),
-				headers:{"Content-Type":"application/json"}
-			}).then((response)=>{
-				return response.json()
-			}).then((data)=>{
-				console.log(data)
-			}).catch((error)=>{
-				console.log(error)
-			})
-			
-		}
+		fetch("http://assets.breatheco.de/apis/fake/todos/user/"+newUser,{
+			method:"POST",
+			body: JSON.stringify([]),
+			headers:{"Content-Type":"application/json"}
+		}).then((response)=>{
+			return response.json()
+		}).then((data)=>{
+			console.log(data)
+		}).catch((error)=>{
+			console.log(error)
+		})
+		setNewUser("")
 	}
 
 	return (
@@ -104,7 +108,7 @@ function App() {
 				</select>
 				<span className="form-label">OR</span>
 				<div className="input-group">
-					<input id="createUser" type="text" className="form-control" placeholder="Recipient's username" onChange={handleUsername} value={username} aria-label="Recipient's username" aria-describedby="button-addon2" />
+					<input id="createUser" type="text" className="form-control" placeholder="Recipient's username" onChange={handleNewUser} value={newUser} aria-label="Recipient's username" aria-describedby="button-addon2" />
 					<button className="btn" type="button" id="button-addon2" onClick={createUser}>Create user</button>
 				</div>
 			</div>
